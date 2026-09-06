@@ -1,0 +1,498 @@
+@import '@fontsource/amiri';
+@import '@fontsource/cairo';
+
+:root {
+  --bg-color: #fcf8f8;
+  --primary: #c0848a;
+  --primary-light: #e5b3b8;
+  --primary-dark: #a1646a;
+  --text-dark: #4a4a4a;
+  --text-light: #888888;
+  --white: #ffffff;
+  --font-heading: 'Amiri', serif;
+  --font-body: 'Cairo', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--primary);
+  font-weight: 400;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--white);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+}
+
+.primary-button {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(192, 132, 138, 0.3);
+}
+
+.primary-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192, 132, 138, 0.4);
+}
+
+.section-padding {
+  padding: 3rem 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Envelope Screen */
+.envelope-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.envelope-screen.opened {
+  transform: translateY(-100vh);
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   NATIVE CSS SCROLL-DRIVEN ANIMATIONS 
+   ========================================================= */
+
+/* Default hidden state for progressively enhanced browsers */
+@media (prefers-reduced-motion: no-preference) {
+  /* 
+     Check for native Scroll-driven animations API. 
+     (animation-range: entry) is required to ensure full feature support.
+  */
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    
+    @keyframes scroll-slide-in {
+      from { 
+        opacity: 0; 
+        transform: translateY(60px) scale(0.96); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
+    }
+
+    .scroll-reveal {
+      /* Bind animation to the viewport intersection */
+      animation: scroll-slide-in linear both;
+      animation-timeline: view();
+      /* Complete once the section has fully entered the scrollport.
+         `cover 30%` left the last section stuck part-way, since the page
+         cannot scroll far enough past it to finish the range. */
+      animation-range: entry 0% entry 100%;
+    }
+  }
+
+  /* 
+     Fallback class for browsers lacking native animation-timeline,
+     managed by IntersectionObserver in ScrollFallback.tsx 
+  */
+  .scroll-fallback-hidden {
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-fallback-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   ENVELOPE — real flap + wax seal
+   ========================================================= */
+
+.env-stage {
+  perspective: 1400px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 2.75rem auto;
+}
+
+.env {
+  --w: 300px;
+  --h: 200px;
+  position: relative;
+  width: var(--w);
+  height: var(--h);
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 400px) {
+  .env { --w: 262px; --h: 175px; }
+}
+
+/* Soft ground shadow */
+.env::after {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -18px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(161, 100, 106, 0.22), transparent 70%);
+}
+
+.env-back {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 6px;
+  background: linear-gradient(160deg, #f6e7e8, #eed6d8);
+  box-shadow: 0 14px 34px rgba(120, 70, 76, 0.16);
+}
+
+/* The card tucked inside, revealed on open */
+.env-card {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 5%;
+  height: 90%;
+  z-index: 2;
+  border-radius: 5px;
+  background: linear-gradient(170deg, #ffffff, #fdf7f7);
+  border: 1px solid #f0dcde;
+  box-shadow: 0 6px 18px rgba(120, 70, 76, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 16px;
+  gap: 4px;
+}
+
+.env-card-names {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  color: var(--primary-dark);
+  line-height: 1.2;
+}
+
+.env-card-rule {
+  width: 46px;
+  height: 1px;
+  background: var(--primary-light);
+  margin: 6px 0;
+}
+
+.env-card-date {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+/* Front pocket */
+.env-body {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 6px;
+  background: linear-gradient(158deg, #fffdfd, #f8eaeb);
+  border: 1px solid #efd9db;
+  overflow: hidden;
+}
+
+/* Diagonal pocket folds */
+.env-body::before,
+.env-body::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(224, 190, 194, 0.5), transparent 62%);
+}
+.env-body::before { left: 0;  clip-path: polygon(0 100%, 0 0, 100% 100%); }
+.env-body::after  { right: 0; clip-path: polygon(100% 100%, 100% 0, 0 100%); background: linear-gradient(to bottom left, rgba(224, 190, 194, 0.5), transparent 62%); }
+
+/* Top flap */
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 59%;
+  z-index: 4;
+  transform-origin: top center;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(to bottom, #fdf4f4, #f2dcde);
+  border-top: 1px solid #efd9db;
+  backface-visibility: visible;
+}
+
+/* Wax seal */
+.env-seal {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  z-index: 5;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fceef0;
+  background: radial-gradient(circle at 34% 28%, #cb767f, #9c4a52 58%, #833b43);
+  box-shadow:
+    0 5px 12px rgba(120, 52, 60, 0.42),
+    inset 0 -3px 7px rgba(0, 0, 0, 0.28),
+    inset 0 3px 6px rgba(255, 255, 255, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.seal-monogram {
+  width: 74%;
+  height: 74%;
+  overflow: visible;
+}
+
+.seal-face  { color: rgba(252, 238, 240, 0.92); }
+.seal-press { color: rgba(88, 34, 41, 0.55); }
+
+.env-seal:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+  box-shadow:
+    0 8px 18px rgba(120, 52, 60, 0.5),
+    inset 0 -3px 7px rgba(0, 0, 0, 0.28),
+    inset 0 3px 6px rgba(255, 255, 255, 0.22);
+}
+
+/* --- Opening choreography --- */
+.env.is-opening .env-seal { animation: sealBreak 0.6s ease-in forwards; }
+.env.is-opening .env-flap { animation: flapOpen 0.9s 0.35s cubic-bezier(0.6, 0.05, 0.3, 1) forwards; }
+.env.is-opening .env-card { animation: cardOut 1.15s 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+@keyframes sealBreak {
+  0%   { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+  35%  { transform: translate(-50%, -50%) scale(1.16) rotate(-7deg); opacity: 1; }
+  100% { transform: translate(-50%, -52%) scale(0.68) rotate(-24deg); opacity: 0; }
+}
+
+@keyframes flapOpen {
+  0%    { transform: rotateX(0deg);    z-index: 4; }
+  49.9% {                              z-index: 4; }
+  50%   {                              z-index: 1; }
+  100%  { transform: rotateX(-172deg); z-index: 1; }
+}
+
+@keyframes cardOut {
+  0%   { transform: translateY(0) scale(1); }
+  60%  { transform: translateY(-92%) scale(1); }
+  100% { transform: translateY(-100%) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .env.is-opening .env-seal,
+  .env.is-opening .env-flap,
+  .env.is-opening .env-card { animation: none; }
+  .env.is-opening .env-seal { opacity: 0; }
+}
+
+/* =========================================================
+   ORNAMENT DIVIDER
+   ========================================================= */
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 1.75rem auto;
+  max-width: 200px;
+  color: var(--primary-light);
+}
+
+.ornament span {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to var(--orn-dir, right), transparent, var(--primary-light));
+}
+
+.ornament span + span { background: linear-gradient(to var(--orn-dir, right), var(--primary-light), transparent); }
+
+.ornament i {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background: var(--primary-light);
+  border-radius: 1px;
+}
+
+/* =========================================================
+   LANGUAGE SWITCH
+   ========================================================= */
+
+.lang-switch {
+  position: fixed;
+  top: 16px;
+  inset-inline-start: 16px;
+  z-index: 120;
+  display: flex;
+  padding: 3px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--primary-light);
+  box-shadow: 0 4px 14px rgba(120, 70, 76, 0.14);
+  backdrop-filter: blur(6px);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* Retreat while scrolling down so it never covers the invitation text. */
+.lang-switch[data-hidden='true'] {
+  transform: translateY(-140%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lang-switch button {
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background: transparent;
+  line-height: 1.2;
+}
+
+.lang-switch button[aria-pressed='true'] {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* =========================================================
+   FOOTER — Keyframe Global
+   ========================================================= */
+
+.kf-footer {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-color);
+  border-top: 1px solid rgba(229, 179, 184, 0.4);
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.kf-blueprint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.kf-pill {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 20px;
+  border: 1px solid rgba(229, 179, 184, 0.55);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  direction: ltr;
+  transition: border-color 0.25s ease;
+}
+
+.kf-muted { color: var(--text-light); }
+.kf-heart { color: var(--primary); font-size: 0.72rem; }
+.kf-brand { color: var(--primary-dark); font-weight: 700; }
+
+.kf-footer:hover .kf-pill { border-color: var(--primary); }
+
+@media (max-width: 360px) {
+  .kf-pill { font-size: 0.53rem; letter-spacing: 0.11em; padding: 8px 14px; gap: 5px; }
+}
