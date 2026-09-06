@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Outer wax radial gradient with warm highlight at top-left -->
+    <radialGradient id="waxBg" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#db7c85" />
+      <stop offset="35%" stop-color="#b85963" />
+      <stop offset="70%" stop-color="#8e3841" />
+      <stop offset="100%" stop-color="#6a2027" />
+    </radialGradient>
+
+    <!-- Inner pressed wax bed -->
+    <radialGradient id="waxBed" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#b1545e" />
+      <stop offset="65%" stop-color="#8e353e" />
+      <stop offset="100%" stop-color="#6c2128" />
+    </radialGradient>
+
+    <!-- Outer wax rim highlight/shadow -->
+    <linearGradient id="rimLight" x1="20%" y1="10%" x2="80%" y2="90%">
+      <stop offset="0%" stop-color="#ffeacc" stop-opacity="0.55" />
+      <stop offset="40%" stop-color="#fff5ea" stop-opacity="0.1" />
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.5" />
+    </linearGradient>
+
+    <!-- Debossed inner step shadow -->
+    <linearGradient id="bedShadow" x1="25%" y1="15%" x2="75%" y2="85%">
+      <stop offset="0%" stop-color="#3a0e13" stop-opacity="0.75" />
+      <stop offset="50%" stop-color="#3a0e13" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#fbb4bc" stop-opacity="0.35" />
+    </linearGradient>
+
+    <!-- Monogram royal champagne gold gradient -->
+    <linearGradient id="monogramGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbee" />
+      <stop offset="25%" stop-color="#fae5c3" />
+      <stop offset="65%" stop-color="#e4ba85" />
+      <stop offset="100%" stop-color="#c89659" />
+    </linearGradient>
+
+    <!-- Monogram drop/press shadow -->
+    <filter id="monogramShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="2" dy="3" stdDeviation="1.5" flood-color="#380b10" flood-opacity="0.75" />
+    </filter>
+
+    <!-- Seal base drop shadow -->
+    <filter id="sealShadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#3a0c11" flood-opacity="0.42" />
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#180205" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  
+
+  <!-- Base wax seal drop shadow & outer disc -->
+  <circle cx="256" cy="248" r="232" fill="url(#waxBg)" filter="url(#sealShadow)" />
+
+  <!-- Outer rim bevel & highlight -->
+  <circle cx="256" cy="248" r="230" fill="none" stroke="url(#rimLight)" stroke-width="4.5" />
+
+  <!-- Wax puddle edge lip (subtle pressed wax ridge) -->
+  <circle cx="256" cy="248" r="212" fill="none" stroke="#52171d" stroke-width="3" opacity="0.5" />
+  <circle cx="256" cy="250" r="210" fill="none" stroke="#f8b4bc" stroke-width="1.8" opacity="0.3" />
+
+  <!-- Inner debossed seal bed -->
+  <circle cx="256" cy="252" r="202" fill="url(#waxBed)" />
+  <circle cx="256" cy="252" r="202" fill="none" stroke="url(#bedShadow)" stroke-width="4" />
+
+  <!-- Monogram Art with debossed shadow + raised face -->
+  <g filter="url(#monogramShadow)">
+    <!-- Double concentric rings -->
+    <circle cx="256" cy="252" r="176" fill="none" stroke="url(#monogramGrad)" stroke-width="8.5" />
+    <circle cx="256" cy="252" r="154" fill="none" stroke="url(#monogramGrad)" stroke-width="3.8" opacity="0.85" />
+
+    <!-- Vertical Diamond finials -->
+    <path d="M256 124 L267 138 L256 152 L245 138 Z" fill="url(#monogramGrad)" />
+    <path d="M256 352 L267 366 L256 380 L245 366 Z" fill="url(#monogramGrad)" />
+
+    <!-- Center hairline divider -->
+    <rect x="254" y="166" width="4" height="172" rx="2" fill="url(#monogramGrad)" opacity="0.75" />
+
+    <!-- The two initials: Meem (left) and Yaa (right) -->
+    <path d="M162.78 215.89L162.78 215.89Q163.11 209.92 164.27 204.70Q165.43 199.48 167.58 195.00L167.58 195.00Q183.17 163.49 210.70 200.97L210.70 200.97Q212.69 204.12 212.35 206.44L212.35 206.44Q211.19 213.57 210.45 217.63Q209.70 221.70 209.20 222.69L209.20 222.69Q207.71 226.84 203.57 226.01L203.57 226.01Q178.69 220.04 164.27 235.96L164.27 235.96Q167.09 247.07 169.57 257.26Q172.06 267.46 174.05 277.08L174.05 277.08Q177.70 294.82 178.86 305.68Q180.02 316.54 178.86 320.69L178.86 320.69Q177.70 324.50 175.21 325.00L175.21 325.00Q171.56 325.50 170.90 318.53L170.90 318.53Q170.24 311.07 168.58 302.12Q166.92 293.16 164.10 282.72L164.10 282.72Q154.15 244.91 155.65 233.14L155.65 233.14Q157.14 221.53 162.78 215.89M172.23 210.92L172.23 210.92Q175.21 209.59 178.86 208.68Q182.51 207.77 186.65 207.27L186.65 207.27Q180.52 202.13 177.53 203.13L177.53 203.13Q173.06 204.45 172.23 210.92" fill="url(#monogramGrad)" />
+    <path d="M368.71 210.35L368.71 210.35Q361.40 206.48 348.79 213.08L348.79 213.08Q338.61 218.38 336.46 226.12L336.46 226.12Q336.17 227.27 336.60 228.42L336.60 228.42Q339.18 234.01 354.81 234.87L354.81 234.87Q370.43 235.73 371.29 242.61L371.29 242.61Q373.16 256.23 365.42 262.54L365.42 262.54Q344.06 279.60 317.39 280.60L317.39 280.60Q283.99 281.89 281.84 255.66L281.84 255.66Q280.83 242.47 287.72 228.13L287.72 228.13Q291.59 220.25 296.17 214.37L296.17 214.37Q298.32 211.50 299.90 213.08L299.90 213.08Q301.48 214.65 299.04 218.10L299.04 218.10Q286.57 236.45 291.16 248.49L291.16 248.49Q297.03 263.40 318.68 262.97L318.68 262.97Q344.20 262.54 360.69 250.06L360.69 250.06Q357.39 248.92 346.64 248.20L346.64 248.20Q332.44 247.05 330.01 239.89L330.01 239.89Q327.43 232.43 330.29 224.26L330.29 224.26Q336.60 206.48 349.79 196.88L349.79 196.88Q360.83 188.85 369.43 191.00L369.43 191.00Q377.75 193.15 374.16 206.63L374.16 206.63Q372.59 212.36 368.71 210.35M323.99 297.23L328.43 290.64Q329.29 289.49 330.87 289.92L330.87 289.92Q333.73 290.92 336.46 292.50Q339.18 294.08 341.48 296.08L341.48 296.08Q342.62 297.23 341.91 298.66L341.91 298.66L335.02 309.56Q333.88 311.14 332.44 309.85L332.44 309.85Q331.87 309.27 329.94 308.05Q328.00 306.84 324.85 304.97L324.85 304.97L320.12 312.71Q319.11 314.15 317.53 313.00L317.53 313.00Q316.82 312.43 314.17 310.85Q311.51 309.27 307.07 306.55L307.07 306.55Q305.49 305.69 306.64 304.11L306.64 304.11L313.52 293.79Q314.38 292.64 315.96 293.07L315.96 293.07Q320.26 294.51 323.99 297.23L323.99 297.23" fill="url(#monogramGrad)" />
+  </g>
+
+  <!-- Top-left sheen/reflection on the seal face -->
+  <ellipse cx="210" cy="150" rx="135" ry="65" transform="rotate(-25 210 150)" fill="#ffffff" opacity="0.09" pointer-events="none" />
+</svg>
