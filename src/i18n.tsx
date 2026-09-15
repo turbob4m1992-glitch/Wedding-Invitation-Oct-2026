@@ -12,6 +12,9 @@ export interface Strings {
   sealRight: string;
 
   bismillah: string;
+  fathersLine: string;
+  groomFather: string;
+  brideFather: string;
   groomFirst: string;
   brideFirst: string;
   heroIntro: string;
@@ -35,9 +38,6 @@ export interface Strings {
   hours: string;
   minutes: string;
   seconds: string;
-
-  scheduleTitle: string;
-  events: { time: string; title: string }[];
 
   locationTitle: string;
   dateLine: string;
@@ -73,9 +73,12 @@ const ar: Strings = {
   sealRight: 'ي',
 
   bismillah: 'بسم الله الرحمن الرحيم',
+  fathersLine: 'السيد زيدون بلعاوي & المهندس علّام نجار',
+  groomFather: 'السيد زيدون بلعاوي',
+  brideFather: 'المهندس علّام نجار',
   groomFirst: 'يوسف',
   brideFirst: 'مَلَك',
-  heroIntro: 'نتشرف بدعوتكم لحضور حفل زفافنا ومشاركتنا فرحتنا',
+  heroIntro: 'يتشرفون بدعوتكم لحضور حفل زفاف أبنائهم ومشاركتهم فرحتهم',
   scrollCue: 'مرّر للأسفل',
 
   verse:
@@ -87,7 +90,7 @@ const ar: Strings = {
   blessingLine2: 'عائلتا العروسين تتشرفان بدعوتكم لحضور حفل زفاف أبنائهما',
   brideFamilyLabel: 'عائلة العروس',
   groomFamilyLabel: 'عائلة العريس',
-  brideFamilyLine1: 'السيد علّام نجار',
+  brideFamilyLine1: 'المهندس علّام نجار',
   brideFamilyLine2: 'وحرمه',
   groomFamilyLine1: 'السيد زيدون بلعاوي',
   groomFamilyLine2: 'وحرمه',
@@ -98,16 +101,9 @@ const ar: Strings = {
   minutes: 'دقائق',
   seconds: 'ثواني',
 
-  scheduleTitle: 'برنامج الحفل',
-  events: [
-    { time: '7:00 م', title: 'استقبال الضيوف' },
-    { time: '7:30 م', title: 'زفة العروسين' },
-    { time: '8:00 م', title: 'الاحتفال' },
-  ],
-
   locationTitle: 'الموقع والزمان',
   dateLine: 'الجمعة، 9 أكتوبر 2026',
-  timeLine: 'السابعة مساءً',
+  timeLine: 'الساعة 7:00 مساءً',
   venue: 'Sky Hall',
   city: 'إربد، الأردن',
   mapButton: 'عرض على خرائط جوجل',
@@ -139,9 +135,12 @@ const en: Strings = {
   sealRight: 'M',
 
   bismillah: 'In the name of God, the Most Gracious, the Most Merciful',
+  fathersLine: 'Mr. Zaidoun Balawi & Eng. Allam Najjar',
+  groomFather: 'Mr. Zaidoun Balawi',
+  brideFather: 'Eng. Allam Najjar',
   groomFirst: 'Yousef',
   brideFirst: 'Malak',
-  heroIntro: 'We would be honoured by your presence as we celebrate our wedding day',
+  heroIntro: 'request the honour of your presence at the wedding of their children',
   scrollCue: 'Scroll down',
 
   verse:
@@ -153,7 +152,7 @@ const en: Strings = {
   blessingLine2: 'the families of the bride and groom request the honour of your presence at the wedding of their children',
   brideFamilyLabel: "Bride's Family",
   groomFamilyLabel: "Groom's Family",
-  brideFamilyLine1: 'Mr. & Mrs.',
+  brideFamilyLine1: 'Eng. & Mrs.',
   brideFamilyLine2: 'Allam Najjar',
   groomFamilyLine1: 'Mr. & Mrs.',
   groomFamilyLine2: 'Zaidoun Balawi',
@@ -164,16 +163,9 @@ const en: Strings = {
   minutes: 'Minutes',
   seconds: 'Seconds',
 
-  scheduleTitle: 'Order of the Evening',
-  events: [
-    { time: '7:00 PM', title: 'Guest Reception' },
-    { time: '7:30 PM', title: 'Bridal Procession' },
-    { time: '8:00 PM', title: 'The Celebration' },
-  ],
-
   locationTitle: 'Time & Place',
   dateLine: 'Friday, 9 October 2026',
-  timeLine: 'Seven in the evening',
+  timeLine: '7:00 PM',
   venue: 'Sky Hall',
   city: 'Irbid, Jordan',
   mapButton: 'View on Google Maps',

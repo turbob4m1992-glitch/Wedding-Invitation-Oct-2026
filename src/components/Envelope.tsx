@@ -56,11 +56,13 @@ const Envelope: React.FC<EnvelopeProps> = ({ isOpen, onOpen }) => {
             <div className="env-back" />
 
             <div className="env-card">
+              <span className="env-card-fathers">{t.fathersLine}</span>
               <span className="env-card-names">
                 {t.groomFirst} &amp; {t.brideFirst}
               </span>
               <span className="env-card-rule" />
               <span className="env-card-date">{t.dateLine}</span>
+              <span className="env-card-time">{t.timeLine}</span>
             </div>
 
             <div className="env-body" />

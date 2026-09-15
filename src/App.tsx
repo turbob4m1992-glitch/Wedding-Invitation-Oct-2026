@@ -4,7 +4,6 @@ import HeroSection from './components/HeroSection';
 import QuranVerse from './components/QuranVerse';
 import InvitationDetails from './components/InvitationDetails';
 import CountdownTimer from './components/CountdownTimer';
-import Schedule from './components/Schedule';
 import Location from './components/Location';
 import NotesAndContact from './components/NotesAndContact';
 import SaveTheDate from './components/SaveTheDate';
@@ -40,7 +39,6 @@ function App() {
         <QuranVerse />
         <InvitationDetails />
         <CountdownTimer />
-        <Schedule />
         <Location />
         <NotesAndContact />
         <SaveTheDate />

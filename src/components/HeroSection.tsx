@@ -35,11 +35,42 @@ const HeroSection: React.FC = () => {
             fontFamily: 'var(--font-heading)',
             fontSize: lang === 'ar' ? '1.2rem' : '0.95rem',
             color: 'var(--primary)',
-            marginBottom: '2.25rem',
+            marginBottom: '1.25rem',
             letterSpacing: lang === 'ar' ? 'normal' : '0.04em',
           }}
         >
           {t.bismillah}
+        </p>
+
+        <div
+          className="hero-fathers"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '2rem',
+            marginBottom: '1.5rem',
+            fontFamily: 'var(--font-heading)',
+            letterSpacing: lang === 'ar' ? 'normal' : '0.03em',
+            lineHeight: 1.6,
+          }}
+        >
+          {[t.groomFather, t.brideFather].map((father) => (
+            <p key={father} style={{ fontSize: lang === 'ar' ? '1.1rem' : '0.9rem', color: 'var(--primary)' }}>
+              {father}
+            </p>
+          ))}
+        </div>
+
+        <p
+          style={{
+            fontSize: '1.05rem',
+            color: 'var(--text-dark)',
+            maxWidth: '300px',
+            margin: '0 auto 1.75rem',
+            lineHeight: 1.9,
+          }}
+        >
+          {t.heroIntro}
         </p>
 
         <h1
@@ -56,18 +87,6 @@ const HeroSection: React.FC = () => {
           <br />
           {t.brideFirst}
         </h1>
-
-        <p
-          style={{
-            fontSize: '1.05rem',
-            color: 'var(--text-dark)',
-            maxWidth: '300px',
-            margin: '2rem auto 0',
-            lineHeight: 1.9,
-          }}
-        >
-          {t.heroIntro}
-        </p>
       </div>
 
       <div
