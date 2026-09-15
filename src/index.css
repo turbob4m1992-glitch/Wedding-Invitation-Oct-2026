@@ -19,6 +19,12 @@
   padding: 0;
 }
 
+/* Stop pull-to-refresh on phones so a stray swipe can't reload and close the invitation */
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--bg-color);

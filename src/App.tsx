@@ -12,8 +12,28 @@ import BackgroundMusic from './components/BackgroundMusic';
 import MagicalDust from './components/MagicalDust';
 import ScrollFallback from './components/ScrollFallback';
 
+const OPEN_KEY = 'invitation-opened';
+
+// Keep the invitation open if the page reloads anyway (e.g. browsers that ignore overscroll-behavior).
+const wasOpened = () => {
+  try {
+    return sessionStorage.getItem(OPEN_KEY) === '1';
+  } catch {
+    return false;
+  }
+};
+
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(wasOpened);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+    try {
+      sessionStorage.setItem(OPEN_KEY, '1');
+    } catch {
+      // Storage unavailable (private mode): the invitation still opens, it just won't survive a reload.
+    }
+  };
 
   return (
     <div className="app-container">
@@ -23,7 +43,7 @@ function App() {
 
       {isOpen && <MagicalDust />}
 
-      <Envelope isOpen={isOpen} onOpen={() => setIsOpen(true)} />
+      <Envelope isOpen={isOpen} onOpen={handleOpen} />
 
       <div
         style={{
