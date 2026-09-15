@@ -42,22 +42,54 @@ const HeroSection: React.FC = () => {
           {t.bismillah}
         </p>
 
+        <p style={{ fontSize: '0.95rem', color: 'var(--primary)', marginBottom: '1.25rem' }}>
+          {t.envelopeKicker}
+        </p>
+
+        {/* Forced LTR so the bride's family always sits on the left, in both languages. */}
         <div
-          className="hero-fathers"
+          className="hero-families"
           style={{
             display: 'flex',
+            direction: 'ltr',
             justifyContent: 'center',
-            gap: '2rem',
+            alignItems: 'flex-start',
+            gap: '1.25rem',
             marginBottom: '1.5rem',
-            fontFamily: 'var(--font-heading)',
-            letterSpacing: lang === 'ar' ? 'normal' : '0.03em',
-            lineHeight: 1.6,
           }}
         >
-          {[t.groomFather, t.brideFather].map((father) => (
-            <p key={father} style={{ fontSize: lang === 'ar' ? '1.1rem' : '0.9rem', color: 'var(--primary)' }}>
-              {father}
-            </p>
+          {[
+            [t.brideFamilyLabel, t.brideFamilyLine1, t.brideFamilyLine2],
+            [t.groomFamilyLabel, t.groomFamilyLine1, t.groomFamilyLine2],
+          ].map(([label, line1, line2], i) => (
+            <React.Fragment key={label}>
+              {i > 0 && (
+                <div
+                  style={{
+                    width: '1px',
+                    alignSelf: 'stretch',
+                    backgroundColor: 'var(--primary-light)',
+                  }}
+                />
+              )}
+              <div style={{ flex: 1, direction: t.dir }}>
+                <p style={{ fontSize: '0.8rem', color: 'var(--text-light)', marginBottom: '0.25rem' }}>
+                  {label}
+                </p>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: lang === 'ar' ? '1.1rem' : '0.95rem',
+                    color: 'var(--primary)',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {line1}
+                  <br />
+                  {line2}
+                </p>
+              </div>
+            </React.Fragment>
           ))}
         </div>
 

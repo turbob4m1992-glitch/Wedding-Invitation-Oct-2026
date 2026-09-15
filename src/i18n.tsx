@@ -13,8 +13,6 @@ export interface Strings {
 
   bismillah: string;
   fathersLine: string;
-  groomFather: string;
-  brideFather: string;
   groomFirst: string;
   brideFirst: string;
   heroIntro: string;
@@ -23,9 +21,6 @@ export interface Strings {
   verse: string;
   verseRef: string;
 
-  detailsTitle: string;
-  blessingLine1: string;
-  blessingLine2: string;
   brideFamilyLabel: string;
   groomFamilyLabel: string;
   brideFamilyLine1: string;
@@ -74,8 +69,6 @@ const ar: Strings = {
 
   bismillah: 'بسم الله الرحمن الرحيم',
   fathersLine: 'السيد زيدون بلعاوي & المهندس علّام نجار',
-  groomFather: 'السيد زيدون بلعاوي',
-  brideFather: 'المهندس علّام نجار',
   groomFirst: 'يوسف',
   brideFirst: 'مَلَك',
   heroIntro: 'يتشرفون بدعوتكم لحضور حفل زفاف أبنائهم ومشاركتهم فرحتهم',
@@ -85,9 +78,6 @@ const ar: Strings = {
     'وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً',
   verseRef: 'سورة الروم ٢١',
 
-  detailsTitle: 'دعوة زفاف',
-  blessingLine1: 'بكل الحب والود،',
-  blessingLine2: 'عائلتا العروسين تتشرفان بدعوتكم لحضور حفل زفاف أبنائهما',
   brideFamilyLabel: 'عائلة العروس',
   groomFamilyLabel: 'عائلة العريس',
   brideFamilyLine1: 'المهندس علّام نجار',
@@ -136,8 +126,6 @@ const en: Strings = {
 
   bismillah: 'In the name of God, the Most Gracious, the Most Merciful',
   fathersLine: 'Mr. Zaidoun Balawi & Eng. Allam Najjar',
-  groomFather: 'Mr. Zaidoun Balawi',
-  brideFather: 'Eng. Allam Najjar',
   groomFirst: 'Yousef',
   brideFirst: 'Malak',
   heroIntro: 'request the honour of your presence at the wedding of their children',
@@ -147,9 +135,6 @@ const en: Strings = {
     'And among His signs is that He created for you mates from among yourselves, that you may find tranquillity in them, and He placed between you affection and mercy.',
   verseRef: 'Surah Ar-Rum 30:21',
 
-  detailsTitle: 'Wedding Invitation',
-  blessingLine1: 'With all our love,',
-  blessingLine2: 'the families of the bride and groom request the honour of your presence at the wedding of their children',
   brideFamilyLabel: "Bride's Family",
   groomFamilyLabel: "Groom's Family",
   brideFamilyLine1: 'Eng. & Mrs.',
