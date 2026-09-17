@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>App icon</title>
+<!-- Home-screen icon, 512x512: the gold seal on the evening wine ground.
+     Add #bare for the seal alone on a transparent background (browser tab icons). -->
+<style>
+*{margin:0;padding:0}
+html,body{width:512px;height:512px;overflow:hidden;background:transparent}
+body{display:flex;align-items:center;justify-content:center}
+body.ground{background:radial-gradient(circle at 50% 38%,#5B1E2B 0%,#43131E 60%,#2A0A12 100%)}
+img{display:block}
+body.ground img{width:420px;height:420px;filter:drop-shadow(0 10px 16px rgba(0,0,0,.45))}
+body.bare img{width:600px;height:600px}
+</style>
+</head>
+<body>
+<script>document.body.className = location.hash === '#bare' ? 'bare' : 'ground';</script>
+<img id="seal" src="../src/assets/seal-gold.png" alt="">
+<script>if (location.hash === '#bare') document.getElementById('seal').src = '../src/assets/seal-wine.png';</script>
+</body>
+</html>

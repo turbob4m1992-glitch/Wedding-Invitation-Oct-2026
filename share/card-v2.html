@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Yousef & Malak | Card v2</title>
+<!--
+  Portrait invitation card, 1080x1350 (4:5), rendered at 2x.
+  Default theme is ivory paper. Open with #evening for the deep wine variant.
+-->
+<style>
+@font-face{font-family:Amiri;font-weight:400;src:url("../node_modules/@fontsource/amiri/files/amiri-arabic-400-normal.woff2") format("woff2")}
+@font-face{font-family:Amiri;font-weight:700;src:url("../node_modules/@fontsource/amiri/files/amiri-arabic-700-normal.woff2") format("woff2")}
+@font-face{font-family:Plex;font-weight:300;src:url("../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-300-normal.woff2") format("woff2")}
+@font-face{font-family:Plex;font-weight:400;src:url("../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2") format("woff2")}
+@font-face{font-family:Cormorant;font-weight:500;src:url("../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:Cormorant;font-weight:500;font-style:italic;src:url("../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-italic.woff2") format("woff2")}
+
+:root{
+  --paper-hi:#FFFDF8; --paper:#FAF5EC; --paper-lo:#EFE4D2;
+  --wine:#5A1E2A; --ink:#3F2E2F; --muted:#8E7C72;
+  --rule:#C3A263;
+  --foil:linear-gradient(118deg,#7A5A22 0%,#B8904A 20%,#E6CC8C 36%,#A47C3A 52%,#D8B972 68%,#8A6828 84%,#C29E58 100%);
+  --arch-fill:rgba(255,253,247,.5);
+  --grain-blend:multiply; --grain-opacity:.07;
+}
+body.evening{
+  --paper-hi:#5B1E2B; --paper:#43131E; --paper-lo:#2A0A12;
+  --wine:#F4E7CF; --ink:#EADBC3; --muted:#C4A98C;
+  --rule:#B8964F;
+  --arch-fill:rgba(255,235,220,.035);
+  --grain-blend:screen; --grain-opacity:.05;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{
+  position:relative;color:var(--ink);font-family:Plex,sans-serif;
+  background:radial-gradient(ellipse 80% 60% at 50% 32%,var(--paper-hi) 0%,var(--paper) 55%,var(--paper-lo) 100%);
+}
+.layer{position:absolute;inset:0;width:1080px;height:1350px;pointer-events:none}
+.grain{mix-blend-mode:var(--grain-blend);opacity:var(--grain-opacity)}
+
+.foil{
+  background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 -1px 0 rgba(255,248,225,.55)) drop-shadow(0 1.5px 1px rgba(80,50,15,.32));
+}
+
+/* Everything inside the arch */
+.content{position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+.seal{width:158px;height:158px;margin-top:164px;filter:drop-shadow(0 6px 9px rgba(40,10,18,.3))}
+.seal-gold,body.evening .seal-wine{display:none}
+body.evening .seal-gold{display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4))}
+
+.bism{font-family:Amiri;font-size:31px;color:var(--wine);opacity:.85;margin-top:14px;line-height:1.4}
+
+.fams{display:flex;align-items:stretch;justify-content:center;margin-top:28px;gap:34px}
+.fams div{width:300px;display:flex;flex-direction:column;gap:2px}
+.fams small{font-size:19px;font-weight:300;color:var(--muted)}
+.fams b{font-family:Amiri;font-weight:400;font-size:29px;color:var(--wine);line-height:1.45}
+.vrule{width:1px;background:linear-gradient(to bottom,transparent,var(--rule),transparent)}
+
+.intro{font-size:23px;font-weight:300;color:var(--ink);margin-top:22px;line-height:1.7}
+
+.names{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:0;height:278px;direction:rtl}
+.names .n{font-family:'Diwan Thuluth';font-size:238px;line-height:1;padding:44px 14px}
+.names .and{font-family:'Diwan Thuluth';font-size:120px;line-height:1;padding:30px 4px;color:var(--wine);margin-top:52px}
+
+.divider{width:360px;height:24px;margin-top:0}
+
+.date{display:flex;align-items:center;justify-content:center;margin-top:14px}
+.date .side{width:200px;padding:9px 0 7px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-family:Amiri;font-size:31px;color:var(--wine);line-height:1.35}
+.date .day{font-family:Amiri;font-weight:700;font-size:124px;line-height:1;padding:0 34px 12px}
+.time{font-size:25px;font-weight:300;color:var(--ink);margin-top:10px}
+
+.venue{margin-top:26px;font-family:Cormorant;font-weight:500;font-size:38px;letter-spacing:.34em;color:var(--wine);direction:ltr;padding-left:.34em;line-height:1.1}
+.city{font-size:22px;font-weight:300;color:var(--muted);margin-top:8px}
+
+/* Below the arch */
+.foot{position:absolute;left:130px;right:130px;top:1197px;height:82px;display:flex;align-items:center;justify-content:center;gap:34px}
+.foot .txt{width:300px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.foot .note{text-align:right}
+.foot .site{text-align:left}
+.foot b{font-weight:400;font-size:21px;color:var(--wine);line-height:1.5}
+.foot small{font-size:16px;font-weight:300;color:var(--muted);line-height:1.5}
+.foot .latin{font-family:Cormorant;font-style:italic;font-weight:500;font-size:26px;color:var(--wine);direction:ltr;line-height:1.3}
+.foot-star{width:34px;height:34px}
+.vr{width:1px;height:64px;background:linear-gradient(to bottom,transparent,var(--rule),transparent)}
+</style>
+</head>
+<body>
+<script>if (location.hash === '#evening') document.body.classList.add('evening');</script>
+
+<!-- Paper grain and soft mottling -->
+<svg class="layer grain" viewBox="0 0 1080 1350" aria-hidden="true">
+  <filter id="fine"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <filter id="cloud"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="3" seed="4"/><feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="1080" height="1350" filter="url(#fine)"/>
+  <rect width="1080" height="1350" filter="url(#cloud)" opacity=".6"/>
+</svg>
+
+<!-- Gold linework: frame, corners, arch -->
+<svg class="layer" id="art" viewBox="0 0 1080 1350" aria-hidden="true">
+  <defs>
+    <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1080" y2="1350">
+      <stop offset="0" stop-color="#8E6C2C"/><stop offset=".22" stop-color="#C9A860"/>
+      <stop offset=".4" stop-color="#E4CB8A"/><stop offset=".55" stop-color="#A9833F"/>
+      <stop offset=".75" stop-color="#D5B670"/><stop offset="1" stop-color="#8A6828"/>
+    </linearGradient>
+  </defs>
+  <path id="arch-panel" style="fill:var(--arch-fill)"/>
+  <g id="lines" fill="none" stroke="url(#gold)"></g>
+  <g id="fills" fill="url(#gold)"></g>
+</svg>
+
+<div class="content">
+  <img class="seal seal-wine" src="../src/assets/seal-wine.png" alt="">
+  <img class="seal seal-gold" src="../src/assets/seal-gold.png" alt="">
+
+  <div class="bism">بسم الله الرحمن الرحيم</div>
+
+  <div class="fams">
+    <div><small>عائلة العريس</small><b>السيد زيدون بلعاوي وحرمه</b></div>
+    <i class="vrule"></i>
+    <div><small>عائلة العروس</small><b>المهندس علّام نجار وحرمه</b></div>
+  </div>
+
+  <div class="intro">يتشرفون بدعوتكم لحضور حفل زفاف أبنائهم ومشاركتهم فرحتهم</div>
+
+  <div class="names">
+    <span class="n foil">يوسف</span>
+    <span class="and">و</span>
+    <span class="n foil">مَلَك</span>
+  </div>
+
+  <svg class="divider" viewBox="0 0 360 24" aria-hidden="true" id="divider"></svg>
+
+  <div class="date">
+    <div class="side">الجمعة</div>
+    <div class="day foil">٩</div>
+    <div class="side">أكتوبر ٢٠٢٦</div>
+  </div>
+  <div class="time">السابعة مساءً</div>
+
+  <div class="venue">SKY HALL</div>
+  <div class="city">إربد، الأردن</div>
+</div>
+
+<div class="foot">
+  <div class="txt note"><b>نعتذر عن اصطحاب الأطفال</b><small>الدعوة مخصّصة للمدعوّين بأسمائهم الكرام</small></div>
+  <i class="vr"></i>
+  <svg class="foot-star" id="foot-star" viewBox="0 0 34 34" aria-hidden="true"></svg>
+  <i class="vr"></i>
+  <div class="txt site"><span class="latin">yousefandmalak.com</span><small>تفاصيل الحفل والموقع</small></div>
+</div>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+const el = (parent, tag, attrs) => {
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  parent.appendChild(n);
+  return n;
+};
+
+/* Eight-pointed star (khatam) as a 16-vertex polygon */
+const star = (cx, cy, ro, ri = ro * 0.62) =>
+  Array.from({ length: 16 }, (_, i) => {
+    const a = (i * 22.5 - 90) * Math.PI / 180, r = i % 2 ? ri : ro;
+    return `${(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`;
+  }).join(' ');
+
+/* Slightly pointed arch: both arcs spring from the same line and meet at the apex */
+const arch = (xl, xr, apexY, springY, baseY) => {
+  const half = (xr - xl) / 2, h = springY - apexY;
+  const R = (half * half + h * h) / (2 * half);
+  return `M${xl} ${baseY}V${springY}A${R} ${R} 0 0 1 ${xl + half} ${apexY}A${R} ${R} 0 0 1 ${xr} ${springY}V${baseY}`;
+};
+
+const lines = document.getElementById('lines');
+const fills = document.getElementById('fills');
+
+// Double frame
+el(lines, 'rect', { x: 30, y: 30, width: 1020, height: 1290, rx: 3, 'stroke-width': 1.8 });
+el(lines, 'rect', { x: 42, y: 42, width: 996, height: 1266, rx: 2, 'stroke-width': .7 });
+
+// Corner stars with short trailing rules
+[[70, 70, 1, 1], [1010, 70, -1, 1], [70, 1280, 1, -1], [1010, 1280, -1, -1]].forEach(([x, y, dx, dy]) => {
+  el(lines, 'polygon', { points: star(x, y, 17), 'stroke-width': 1 });
+  el(fills, 'polygon', { points: star(x, y, 6.5) });
+  el(lines, 'path', { d: `M${x + dx * 26} ${y}h${dx * 52}M${x} ${y + dy * 26}v${dy * 52}`, 'stroke-width': .8 });
+  el(fills, 'circle', { cx: x + dx * 84, cy: y, r: 2 });
+  el(fills, 'circle', { cx: x, cy: y + dy * 84, r: 2 });
+});
+
+// Arch, doubled, standing on a plinth line
+document.getElementById('arch-panel').setAttribute('d', arch(154, 926, 143, 560, 1184) + 'Z');
+el(lines, 'path', { d: arch(140, 940, 128, 560, 1184), 'stroke-width': 1.6 });
+el(lines, 'path', { d: arch(154, 926, 143, 560, 1184), 'stroke-width': .7 });
+el(lines, 'path', { d: 'M104 1184H976', 'stroke-width': 1.4 });
+el(lines, 'path', { d: 'M122 1192H958', 'stroke-width': .6 });
+
+// Apex finial
+el(lines, 'polygon', { points: star(540, 96, 20), 'stroke-width': 1 });
+el(fills, 'polygon', { points: star(540, 96, 8) });
+el(lines, 'path', { d: 'M540 70V52', 'stroke-width': .8 });
+
+// Divider under the names
+const div = document.getElementById('divider');
+const g = el(div, 'g', { stroke: '#C3A263', fill: 'none' });
+el(g, 'path', { d: 'M20 12H150M210 12H340', 'stroke-width': 1 });
+el(div, 'polygon', { points: star(180, 12, 11), fill: '#C3A263' });
+el(div, 'circle', { cx: 12, cy: 12, r: 2.4, fill: '#C3A263' });
+el(div, 'circle', { cx: 348, cy: 12, r: 2.4, fill: '#C3A263' });
+
+// Star between the two footer notes
+const fs = document.getElementById('foot-star');
+el(fs, 'polygon', { points: star(17, 17, 15), fill: 'none', stroke: '#C3A263', 'stroke-width': 1 });
+el(fs, 'polygon', { points: star(17, 17, 6.5), fill: '#C3A263' });
+</script>
+</body>
+</html>

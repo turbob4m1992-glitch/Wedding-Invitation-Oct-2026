@@ -1,10 +1,15 @@
 import React from 'react';
+import Star from './Star';
 
-/** Thin rule with a centred diamond, used to separate sections. */
-const Ornament: React.FC<{ style?: React.CSSProperties }> = ({ style }) => (
-  <div className="ornament" style={style} aria-hidden="true">
+/** Thin gold rules either side of an eight-pointed star, used to separate sections. */
+const Ornament: React.FC<{ className?: string; style?: React.CSSProperties; size?: number }> = ({
+  className = '',
+  style,
+  size = 12,
+}) => (
+  <div className={`ornament ${className}`} style={style} aria-hidden="true">
     <span />
-    <i />
+    <Star size={size} />
     <span />
   </div>
 );

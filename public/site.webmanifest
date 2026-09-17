@@ -1,11 +1,11 @@
 {
   "name": "يوسف و مَلَك | دعوة زفاف",
   "short_name": "يوسف & مَلَك",
-  "description": "دعوة زفاف يوسف و مَلَك | 9 أكتوبر 2026",
+  "description": "دعوة زفاف يوسف و مَلَك | ٩ أكتوبر ٢٠٢٦",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fcf8f8",
-  "theme_color": "#9c4a52",
+  "background_color": "#43131e",
+  "theme_color": "#43131e",
   "icons": [
     {
       "src": "/favicon-16x16.png",

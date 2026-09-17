@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Envelope from './components/Envelope';
 import HeroSection from './components/HeroSection';
-import QuranVerse from './components/QuranVerse';
 import CountdownTimer from './components/CountdownTimer';
 import Location from './components/Location';
 import NotesAndContact from './components/NotesAndContact';
@@ -54,9 +53,10 @@ function App() {
           overflow: isOpen ? 'auto' : 'hidden',
         }}
       >
-        <HeroSection />
-        <QuranVerse />
-        <CountdownTimer />
+        <HeroSection revealed={isOpen} />
+        <div className="night">
+          <CountdownTimer />
+        </div>
         <Location />
         <NotesAndContact />
         <SaveTheDate />

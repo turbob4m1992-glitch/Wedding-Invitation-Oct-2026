@@ -51,108 +51,28 @@ const downloadIcs = () => {
   URL.revokeObjectURL(url);
 };
 
-const buttonBase: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: '8px',
-  width: '100%',
-  padding: '12px 24px',
-  borderRadius: '30px',
-  fontSize: '1rem',
-  fontWeight: 600,
-  textDecoration: 'none',
-};
-
 const SaveTheDate: React.FC = () => {
   const { t } = useI18n();
 
   return (
-    <section
-      className="section-padding text-center scroll-reveal"
-      style={{ backgroundColor: 'var(--white)' }}
-    >
-      <h3 style={{ fontSize: '1.8rem', color: 'var(--primary-dark)', marginBottom: '1rem' }}>
-        {t.saveTheDateTitle}
-      </h3>
-      <Ornament style={{ marginBottom: '2.25rem' }} />
+    <section className="section scroll-reveal" style={{ paddingTop: '1.5rem' }}>
+      <h3 className="section-title">{t.saveTheDateTitle}</h3>
+      <Ornament />
 
       {/* Tear-off calendar leaf */}
-      <div
-        style={{
-          width: '180px',
-          margin: '0 auto 2.25rem auto',
-          backgroundColor: 'var(--white)',
-          borderRadius: '12px',
-          overflow: 'hidden',
-          border: '1px solid rgba(229, 179, 184, 0.5)',
-          boxShadow: '0 12px 30px rgba(120, 70, 76, 0.12)',
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: 'var(--primary)',
-            color: 'var(--white)',
-            padding: '10px 0',
-            fontSize: '1.1rem',
-            fontWeight: 'bold',
-            letterSpacing: '0.06em',
-          }}
-        >
-          {t.month}
-        </div>
-        <div style={{ padding: '20px 0' }}>
-          <div
-            style={{
-              fontSize: '4rem',
-              fontWeight: 'bold',
-              color: 'var(--primary-dark)',
-              lineHeight: '1',
-              fontFamily: 'var(--font-heading)',
-            }}
-          >
-            {t.day}
-          </div>
-          <div style={{ fontSize: '1.1rem', color: 'var(--text-dark)', marginTop: '10px' }}>
-            {t.weekday}
-          </div>
-        </div>
+      <div className="leaf">
+        <div className="leaf-head night">{t.month}</div>
+        <div className="leaf-day foil-text">{t.day}</div>
+        <div className="leaf-weekday">{t.weekday}</div>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.85rem',
-          maxWidth: '260px',
-          margin: '0 auto',
-        }}
-      >
-        <a
-          href={googleUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            ...buttonBase,
-            backgroundColor: 'var(--primary)',
-            color: 'var(--white)',
-            boxShadow: '0 4px 15px rgba(192, 132, 138, 0.3)',
-          }}
-        >
+      <div className="cal-buttons">
+        <a href={googleUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-wine">
           <CalendarIcon size={18} />
           {t.googleCalendar}
         </a>
 
-        <button
-          type="button"
-          onClick={downloadIcs}
-          style={{
-            ...buttonBase,
-            backgroundColor: 'var(--white)',
-            color: 'var(--primary-dark)',
-            border: '1px solid var(--primary-light)',
-          }}
-        >
+        <button type="button" onClick={downloadIcs} className="btn btn-outline">
           <Apple size={18} />
           {t.appleCalendar}
         </button>

@@ -8,13 +8,11 @@ export interface Strings {
 
   envelopeKicker: string;
   openInvitation: string;
-  sealLeft: string;
-  sealRight: string;
 
   bismillah: string;
-  fathersLine: string;
   groomFirst: string;
   brideFirst: string;
+  namesLabel: string;
   heroIntro: string;
   scrollCue: string;
 
@@ -34,9 +32,15 @@ export interface Strings {
   minutes: string;
   seconds: string;
 
-  locationTitle: string;
+  /** The date, whole and in the parts the date blocks set separately. */
   dateLine: string;
+  weekday: string;
+  day: string;
+  month: string;
+  monthYear: string;
   timeLine: string;
+
+  locationTitle: string;
   venue: string;
   city: string;
   mapButton: string;
@@ -47,9 +51,6 @@ export interface Strings {
   adultsLine2: string;
 
   saveTheDateTitle: string;
-  month: string;
-  day: string;
-  weekday: string;
   googleCalendar: string;
   appleCalendar: string;
 
@@ -64,13 +65,11 @@ const ar: Strings = {
 
   envelopeKicker: 'دعوة زفاف',
   openInvitation: 'افتح الدعوة',
-  sealLeft: 'م',
-  sealRight: 'ي',
 
   bismillah: 'بسم الله الرحمن الرحيم',
-  fathersLine: 'السيد زيدون بلعاوي & المهندس علّام نجار',
   groomFirst: 'يوسف',
   brideFirst: 'مَلَك',
+  namesLabel: 'يوسف و مَلَك',
   heroIntro: 'يتشرفون بدعوتكم لحضور حفل زفاف أبنائهم ومشاركتهم فرحتهم',
   scrollCue: 'مرّر للأسفل',
 
@@ -91,10 +90,15 @@ const ar: Strings = {
   minutes: 'دقائق',
   seconds: 'ثواني',
 
+  dateLine: 'الجمعة ٩ أكتوبر ٢٠٢٦',
+  weekday: 'الجمعة',
+  day: '٩',
+  month: 'أكتوبر',
+  monthYear: 'أكتوبر ٢٠٢٦',
+  timeLine: 'السابعة مساءً',
+
   locationTitle: 'الموقع والزمان',
-  dateLine: 'الجمعة، 9 أكتوبر 2026',
-  timeLine: 'الساعة 7:00 مساءً',
-  venue: 'Sky Hall',
+  venue: 'SKY HALL',
   city: 'إربد، الأردن',
   mapButton: 'عرض على خرائط جوجل',
 
@@ -104,9 +108,6 @@ const ar: Strings = {
   adultsLine2: 'نثق بتفهّمكم الكريم، لتبقى الأمسية هادئة ومريحة للجميع.',
 
   saveTheDateTitle: 'احفظ الموعد',
-  month: 'أكتوبر',
-  day: '9',
-  weekday: 'الجمعة',
   googleCalendar: 'تقويم جوجل',
   appleCalendar: 'تقويم آبل',
 
@@ -121,13 +122,11 @@ const en: Strings = {
 
   envelopeKicker: 'Wedding Invitation',
   openInvitation: 'Open Invitation',
-  sealLeft: 'Y',
-  sealRight: 'M',
 
   bismillah: 'In the name of God, the Most Gracious, the Most Merciful',
-  fathersLine: 'Mr. Zaidoun Balawi & Eng. Allam Najjar',
   groomFirst: 'Yousef',
   brideFirst: 'Malak',
+  namesLabel: 'Yousef & Malak',
   heroIntro: 'request the honour of your presence at the wedding of their children',
   scrollCue: 'Scroll down',
 
@@ -148,10 +147,15 @@ const en: Strings = {
   minutes: 'Minutes',
   seconds: 'Seconds',
 
-  locationTitle: 'Time & Place',
   dateLine: 'Friday, 9 October 2026',
-  timeLine: '7:00 PM',
-  venue: 'Sky Hall',
+  weekday: 'Friday',
+  day: '9',
+  month: 'October',
+  monthYear: 'Oct 2026',
+  timeLine: "Seven o'clock in the evening",
+
+  locationTitle: 'Time & Place',
+  venue: 'SKY HALL',
   city: 'Irbid, Jordan',
   mapButton: 'View on Google Maps',
 
@@ -161,9 +165,6 @@ const en: Strings = {
   adultsLine2: 'We trust in your kind understanding, so the evening stays calm and comfortable for everyone.',
 
   saveTheDateTitle: 'Save the Date',
-  month: 'October',
-  day: '9',
-  weekday: 'Friday',
   googleCalendar: 'Google Calendar',
   appleCalendar: 'Apple Calendar',
 

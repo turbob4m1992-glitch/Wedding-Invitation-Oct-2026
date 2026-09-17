@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Yousef & Malak | Link preview</title>
+<!-- Link preview image, 1200x630. Rendered to public/og-image.jpg. Content stays
+     inside the centre 630px so square crops (WhatsApp thumbnails) keep it whole. -->
+<style>
+@font-face{font-family:Amiri;font-weight:400;src:url("../node_modules/@fontsource/amiri/files/amiri-arabic-400-normal.woff2") format("woff2")}
+@font-face{font-family:Plex;font-weight:300;src:url("../node_modules/@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-300-normal.woff2") format("woff2")}
+@font-face{font-family:Cormorant;font-weight:500;src:url("../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2") format("woff2")}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{
+  position:relative;color:#F4E7CF;font-family:Plex,sans-serif;text-align:center;
+  background:radial-gradient(ellipse 70% 90% at 50% 40%,#5B1E2B 0%,#43131E 55%,#2A0A12 100%);
+}
+.layer{position:absolute;inset:0;width:1200px;height:630px}
+.grain{mix-blend-mode:screen;opacity:.05}
+.foil{
+  background:linear-gradient(118deg,#A9843F 0%,#D9BB76 22%,#F4E2AB 38%,#C29E58 54%,#ECD494 70%,#A9843F 86%,#D4B26A 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));
+}
+.content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.seal{width:104px;height:104px;margin-top:-4px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+.kicker{font-family:Amiri;font-size:30px;line-height:1.3;margin-top:2px}
+.names{display:flex;align-items:center;justify-content:center;gap:2px;height:226px;margin-top:-12px}
+.names .n{font-family:'Diwan Thuluth';font-size:204px;line-height:1;padding:36px 10px}
+.names .and{font-family:'Diwan Thuluth';font-size:100px;line-height:1;padding:24px 3px;color:#F4E7CF;margin-top:46px}
+.divider{width:300px;height:20px;margin-top:2px}
+.date{font-family:Amiri;font-size:30px;line-height:1.5;margin-top:10px}
+.venue{font-family:Cormorant;font-weight:500;font-size:24px;letter-spacing:.34em;padding-left:.34em;direction:ltr;color:#E4CB8A;margin-top:4px}
+</style>
+</head>
+<body>
+<svg class="layer grain" viewBox="0 0 1200 630" aria-hidden="true">
+  <filter id="fine"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="1200" height="630" filter="url(#fine)"/>
+</svg>
+
+<svg class="layer" id="art" viewBox="0 0 1200 630" aria-hidden="true">
+  <defs>
+    <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="630">
+      <stop offset="0" stop-color="#8E6C2C"/><stop offset=".25" stop-color="#C9A860"/>
+      <stop offset=".45" stop-color="#E4CB8A"/><stop offset=".62" stop-color="#A9833F"/>
+      <stop offset=".8" stop-color="#D5B670"/><stop offset="1" stop-color="#8A6828"/>
+    </linearGradient>
+  </defs>
+  <g id="lines" fill="none" stroke="url(#gold)"></g>
+  <g id="fills" fill="url(#gold)"></g>
+</svg>
+
+<div class="content">
+  <img class="seal" src="../src/assets/seal-gold.png" alt="">
+  <div class="kicker foil">دعوة زفاف</div>
+  <div class="names">
+    <span class="n foil">يوسف</span>
+    <span class="and">و</span>
+    <span class="n foil">مَلَك</span>
+  </div>
+  <svg class="divider" id="divider" viewBox="0 0 300 20" aria-hidden="true"></svg>
+  <div class="date">الجمعة ٩ أكتوبر ٢٠٢٦، السابعة مساءً</div>
+  <div class="venue">SKY HALL · IRBID</div>
+</div>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+const el = (parent, tag, attrs) => {
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  parent.appendChild(n);
+  return n;
+};
+const star = (cx, cy, ro, ri = ro * 0.62) =>
+  Array.from({ length: 16 }, (_, i) => {
+    const a = (i * 22.5 - 90) * Math.PI / 180, r = i % 2 ? ri : ro;
+    return `${(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`;
+  }).join(' ');
+
+const lines = document.getElementById('lines');
+const fills = document.getElementById('fills');
+el(lines, 'rect', { x: 24, y: 24, width: 1152, height: 582, rx: 3, 'stroke-width': 1.6 });
+el(lines, 'rect', { x: 35, y: 35, width: 1130, height: 560, rx: 2, 'stroke-width': .7 });
+[[64, 64, 1, 1], [1136, 64, -1, 1], [64, 566, 1, -1], [1136, 566, -1, -1]].forEach(([x, y, dx, dy]) => {
+  el(lines, 'polygon', { points: star(x, y, 15), 'stroke-width': 1 });
+  el(fills, 'polygon', { points: star(x, y, 5.5) });
+  el(lines, 'path', { d: `M${x + dx * 24} ${y}h${dx * 60}M${x} ${y + dy * 24}v${dy * 60}`, 'stroke-width': .8 });
+});
+
+const div = document.getElementById('divider');
+el(div, 'path', { d: 'M16 10H128M172 10H284', stroke: '#C9A860', 'stroke-width': 1, fill: 'none' });
+el(div, 'polygon', { points: star(150, 10, 9), fill: '#D9BB76' });
+</script>
+</body>
+</html>
