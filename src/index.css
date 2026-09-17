@@ -1008,9 +1008,18 @@ html:lang(en) .note-title {
   color: var(--ink);
 }
 
-.note-text + .note-text {
-  margin-top: 0.4rem;
-  font-weight: 300;
+.note-closing {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--wine);
+}
+
+html:lang(en) .note-closing {
+  font-family: var(--font-latin);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.25rem;
 }
 
 /* =========================================================

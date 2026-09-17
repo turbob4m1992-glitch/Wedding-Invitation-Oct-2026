@@ -47,8 +47,8 @@ export interface Strings {
 
   notesTitle: string;
   adultsTitle: string;
-  adultsLine1: string;
-  adultsLine2: string;
+  adultsLine: string;
+  honourLine: string;
 
   saveTheDateTitle: string;
   googleCalendar: string;
@@ -104,8 +104,8 @@ const ar: Strings = {
 
   notesTitle: 'ملاحظة مهمة',
   adultsTitle: 'نعتذر عن اصطحاب الأطفال',
-  adultsLine1: 'الدعوة مخصّصة للمدعوّين بأسمائهم الكرام.',
-  adultsLine2: 'نثق بتفهّمكم الكريم، لتبقى الأمسية هادئة ومريحة للجميع.',
+  adultsLine: 'نثق بتفهّمكم الكريم، لتبقى الأمسية هادئة ومريحة للجميع.',
+  honourLine: 'حضوركم شرفٌ لنا، وبه تكتمل فرحتنا.',
 
   saveTheDateTitle: 'احفظ الموعد',
   googleCalendar: 'تقويم جوجل',
@@ -161,8 +161,8 @@ const en: Strings = {
 
   notesTitle: 'An Important Note',
   adultsTitle: 'Kindly, no children',
-  adultsLine1: 'This invitation is extended only to those named on it.',
-  adultsLine2: 'We trust in your kind understanding, so the evening stays calm and comfortable for everyone.',
+  adultsLine: 'We trust in your kind understanding, so the evening stays calm and comfortable for everyone.',
+  honourLine: 'Your presence honours us and completes our joy.',
 
   saveTheDateTitle: 'Save the Date',
   googleCalendar: 'Google Calendar',

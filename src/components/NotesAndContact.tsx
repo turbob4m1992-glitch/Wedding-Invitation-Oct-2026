@@ -17,8 +17,9 @@ const NotesAndContact: React.FC = () => {
           <Star size={20} outlined />
         </span>
         <h4 className="note-title">{t.adultsTitle}</h4>
-        <p className="note-text">{t.adultsLine1}</p>
-        <p className="note-text">{t.adultsLine2}</p>
+        <p className="note-text">{t.adultsLine}</p>
+        <div className="panel-rule" />
+        <p className="note-closing">{t.honourLine}</p>
       </div>
     </section>
   );
