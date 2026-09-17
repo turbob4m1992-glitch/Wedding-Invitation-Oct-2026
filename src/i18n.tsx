@@ -61,7 +61,7 @@ export interface Strings {
 
 const ar: Strings = {
   dir: 'rtl',
-  docTitle: 'يوسف و مَلَك | دعوة زفاف',
+  docTitle: 'دعوة زفاف | يوسف و مَلَك',
 
   envelopeKicker: 'دعوة زفاف',
   openInvitation: 'افتح الدعوة',
