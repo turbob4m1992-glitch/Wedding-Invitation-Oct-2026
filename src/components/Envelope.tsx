@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import NamesLockup from './NamesLockup';
 import Ornament from './Ornament';
 import { useI18n } from '../i18n';
-import { music } from '../music';
 import sealWine from '../assets/seal-wine.png';
 
 interface EnvelopeProps {
@@ -23,9 +22,6 @@ const Envelope: React.FC<EnvelopeProps> = ({ isOpen, onOpen }) => {
   const handleOpen = () => {
     if (isOpening || isOpen) return;
     setIsOpening(true);
-
-    // The tap is what lets the browser play sound, so start the music here, softly.
-    music.play(3000);
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     timer.current = window.setTimeout(onOpen, reduced ? 200 : REVEAL_MS);
