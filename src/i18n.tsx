@@ -79,7 +79,7 @@ const ar: Strings = {
 
   brideFamilyLabel: 'عائلة العروس',
   groomFamilyLabel: 'عائلة العريس',
-  brideFamilyLine1: 'المهندس علّام نجار',
+  brideFamilyLine1: 'السيد علّام نجار',
   brideFamilyLine2: 'وحرمه',
   groomFamilyLine1: 'السيد زيدون بلعاوي',
   groomFamilyLine2: 'وحرمه',
@@ -136,7 +136,7 @@ const en: Strings = {
 
   brideFamilyLabel: "Bride's Family",
   groomFamilyLabel: "Groom's Family",
-  brideFamilyLine1: 'Eng. & Mrs.',
+  brideFamilyLine1: 'Mr. & Mrs.',
   brideFamilyLine2: 'Allam Najjar',
   groomFamilyLine1: 'Mr. & Mrs.',
   groomFamilyLine2: 'Zaidoun Balawi',

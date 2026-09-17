@@ -6,6 +6,7 @@
 <!--
   Wax seal artwork, 600x600 on a transparent background.
   Rendered to src/assets/seal-wine.png (default) and seal-gold.png (#gold).
+  The monogram is inlaid in the other colour: gold on the wine seal, wine on the gold one.
   The seal is lit with SVG lighting filters: the alpha channel of #height is the
   relief (raised rim, sunken field, raised monogram), so the shading is physical
   rather than painted on.
@@ -38,10 +39,31 @@ svg{display:block}
       <feComposite in="lit" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="shine"/>
       <feComposite in="shine" in2="solid" operator="in"/>
     </filter>
+
+    <!-- The inlaid monogram: its own relief, shrunk a touch so the wax bevel still frames it -->
+    <filter id="inlay" x="0" y="0" width="600" height="600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feMorphology in="SourceAlpha" operator="erode" radius="1.6" result="shape"/>
+      <feComponentTransfer in="shape" result="solid"><feFuncA type="linear" slope="30"/></feComponentTransfer>
+      <feGaussianBlur in="shape" stdDeviation="2.4" result="bump"/>
+      <feDiffuseLighting in="bump" surfaceScale="4.5" diffuseConstant="1" lighting-color="#ffffff" result="diffuse">
+        <feDistantLight azimuth="235" elevation="50"/>
+      </feDiffuseLighting>
+      <feSpecularLighting in="bump" surfaceScale="4.5" specularConstant=".95" specularExponent="18" id="inlay-spec" lighting-color="#fff3cf" result="spec">
+        <feDistantLight azimuth="235" elevation="50"/>
+      </feSpecularLighting>
+      <feFlood id="inlay-colour" flood-color="#B38B45" result="colour"/>
+      <feComposite id="inlay-shade" in="colour" in2="diffuse" operator="arithmetic" k1="1.18" k2="0" k3="0" k4="0" result="lit"/>
+      <feComposite in="spec" in2="solid" operator="in" result="specIn"/>
+      <feComposite in="lit" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="shine"/>
+      <feComposite in="shine" in2="solid" operator="in"/>
+    </filter>
   </defs>
 
   <g filter="url(#wax)">
     <g id="height"></g>
+  </g>
+  <g filter="url(#inlay)">
+    <g id="inlay-art"></g>
   </g>
 </svg>
 
@@ -53,6 +75,13 @@ if (gold) {
   const spec = document.getElementById('spec-l');
   spec.setAttribute('lighting-color', '#fff0c8');
   spec.setAttribute('specularConstant', '.62');
+
+  // Wine monogram on gold wax
+  document.getElementById('inlay-colour').setAttribute('flood-color', '#5E1C2A');
+  document.getElementById('inlay-shade').setAttribute('k1', '1.1');
+  const inlaySpec = document.getElementById('inlay-spec');
+  inlaySpec.setAttribute('lighting-color', '#ffdfe5');
+  inlaySpec.setAttribute('specularConstant', '.4');
 }
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -98,15 +127,20 @@ for (let i = 0; i < 44; i++) {
   el(h, 'circle', { cx: C + (R - 24) * Math.cos(a), cy: C + (R - 24) * Math.sin(a), r: 2.8, fill: '#000', 'fill-opacity': .7 });
 }
 
-// Monogram: ي (Yousef) on the right, م (Malak) on the left, a small eight-pointed star between
-const letters = el(h, 'g', { fill: '#000', 'fill-opacity': .9, 'font-family': 'Amiri', 'font-weight': 700, 'font-size': 150, 'text-anchor': 'middle' });
-el(letters, 'text', { x: C + 66, y: C + 22 }).textContent = 'ي';
-el(letters, 'text', { x: C - 64, y: C + 22 }).textContent = 'م';
-const star = Array.from({ length: 16 }, (_, i) => {
-  const a = (i * 22.5 - 90) * Math.PI / 180, r = i % 2 ? 12 : 21;
-  return `${(C + r * Math.cos(a)).toFixed(2)},${(C - 6 + r * Math.sin(a)).toFixed(2)}`;
-}).join(' ');
-el(h, 'polygon', { points: star, fill: '#000', 'fill-opacity': .88 });
+// Monogram: ي (Yousef) on the right, م (Malak) on the left, a small eight-pointed star between.
+// Drawn twice: raised in the wax relief, then again as the coloured inlay on top.
+const monogram = (parent, opacity) => {
+  const letters = el(parent, 'g', { fill: '#000', 'fill-opacity': opacity, 'font-family': 'Amiri', 'font-weight': 700, 'font-size': 150, 'text-anchor': 'middle' });
+  el(letters, 'text', { x: C + 66, y: C + 22 }).textContent = 'ي';
+  el(letters, 'text', { x: C - 64, y: C + 22 }).textContent = 'م';
+  const star = Array.from({ length: 16 }, (_, i) => {
+    const a = (i * 22.5 - 90) * Math.PI / 180, r = i % 2 ? 12 : 21;
+    return `${(C + r * Math.cos(a)).toFixed(2)},${(C - 6 + r * Math.sin(a)).toFixed(2)}`;
+  }).join(' ');
+  el(parent, 'polygon', { points: star, fill: '#000', 'fill-opacity': opacity });
+};
+monogram(h, .9);
+monogram(document.getElementById('inlay-art'), 1);
 </script>
 </body>
 </html>
